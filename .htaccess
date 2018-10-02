@@ -1,0 +1,16 @@
+<IfModule mod_rewrite.c>
+	#Кодировки
+	AddDefaultCharset utf-8
+	#Ошибки
+	ErrorDocument 403 /403.html
+	ErrorDocument 404 /404.html
+	#запрет листинга
+	Options -Indexes
+	#редирект для чпу
+	RewriteEngine on
+	Options +FollowSymlinks
+	RewriteBase /
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule ^(.*)$ index.php [L,QSA]
+</IfModule>
